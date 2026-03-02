@@ -41,4 +41,4 @@ def get_exchange_rates(
     provider: Optional[Provider] = None,
 ) -> Dict[str, float]:
     result = _get_exchange_rates(base_currency, currencies, provider)
-    return {currency.upper(): result[currency] for currency in currencies}
+    return {currency.upper(): rate for currency, rate in result.items()}
