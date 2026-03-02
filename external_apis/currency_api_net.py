@@ -18,7 +18,6 @@ def get_exchange_rates_currencyapi_net(
     response = httpx.get(url)
     data = response.json()
     rates = data["rates"]
-    print(rates)
     return {
         currency: rates[currency.upper()]
         for currency in currencies

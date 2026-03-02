@@ -2,13 +2,13 @@ from typing import Dict, List
 
 import currencyapicom
 
-from config import Settings
+from config import get_settings
 
 
 def get_exchange_rates_currencyapi_com(
     base_currency: str, currencies: List[str]
 ) -> Dict[str, float]:
-    settings = Settings()
+    settings = get_settings()
     client = currencyapicom.Client(settings.currency_api_com_api_key)
     response = client.latest(
         base_currency=base_currency.upper(),
