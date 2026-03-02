@@ -9,7 +9,7 @@ from utils import get_cached_rates
 app = FastAPI()
 
 
-@app.get("/health")
+@app.get("/healthz")
 def health():
     return dict(time=datetime.now())
 
