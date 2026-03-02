@@ -12,7 +12,7 @@ class Provider(str, Enum):
     FAWAZ = "fawaz"
 
 
-def get_exchange_rates(
+def _get_exchange_rates(
     base_currency: str,
     currencies: List[str],
     provider: Optional[Provider] = None,
@@ -33,3 +33,12 @@ def get_exchange_rates(
     except Exception as e:
         print(e)
     return fw_exchange_rates(base_currency, currencies)
+
+
+def get_exchange_rates(
+    base_currency: str,
+    currencies: List[str],
+    provider: Optional[Provider] = None,
+) -> Dict[str, float]:
+    result = _get_exchange_rates(base_currency, currencies, provider)
+    return {currency.upper(): result[currency] for currency in currencies}
